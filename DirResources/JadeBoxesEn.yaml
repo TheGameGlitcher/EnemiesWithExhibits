@@ -1,0 +1,4 @@
+FairIsFairJadeBox:
+  Name: "Enemies With Exhibits"
+  Description: |-
+    All Normal/Elite/Boss enemies start the battle with {Value1}/{Value2}/{Value3} exhibits.

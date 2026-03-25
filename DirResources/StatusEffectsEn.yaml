@@ -1,0 +1,269 @@
+TengusPompomsSe:
+  Name: Tengu's Pompoms
+  Description: At the start of combat, {OwnerName} gains {Value1} |Spirit|.
+
+TengusClogSe:
+  Name: "Tengu's Clog"
+  Description: "At the start of combat, {OwnerName} gains {Value1} |Firepower|."
+  
+TengusFanSe:
+  Name: "Tengu's Fan"
+  Description: "At the start of combat, {OwnerName} gains {Value1} |Graze|."
+
+TengusCameraSe:
+  Name: "Tengu's Camera"
+  Description: "At the start of combat, {OwnerName} applies {Value1} |Lock On|."
+
+GrapeSe:
+  Name: "Grape"
+  Description: "When acquired, {OwnerName} gains {Value1} maximum life."
+
+KarakasaSe:
+  Name: "Karakasa"
+  Description: "At the start of combat, {OwnerName} gains {Value1} |Block|."
+
+CrowTengusWingSe:
+  Name: "Crow Tengu's Wing"
+  Description: "At the start of combat, {OwnerName} gains {Value1} |Graze|."
+
+SecretCloakSe:
+  Name: "Secret Cloak"
+  Description: "At the start of {PlayerName}'s turn, {OwnerName} gains {Value1} block for each card in {PlayerName}'s hand."
+
+TNTSe:
+  Name: "TNT"
+  Description: "At the end of {OwnerName}'s {Value1:ordinal one='%|n:st|' two='%|n:nd|' few='%|n:rd|' other='%|n:th|'} turn, {OwnerName} deals {Value2} damage."
+
+NimbleFabricSe:
+  Name: "Nimble Fabric"
+  Description: "At the end of {OwnerName}'s {Value1:ordinal one='%|n:st|' two='%|n:nd|' few='%|n:rd|' other='%|n:th|'} turn, {OwnerName} gains {Value2} |Graze|."
+
+ParasolSe:
+  Name: "Parasol"
+  Description: "At the end of {OwnerName}'s {Value1:ordinal one='%|n:st|' two='%|n:nd|' few='%|n:rd|' other='%|n:th|'} turn, {OwnerName} gains {Value2} |Block| and {Value3} |Temporary Firepower|."
+
+AppleSe:
+  Name: "Apple"
+  Description: "When acquired, {OwnerName} gains {Value1} maximum life."
+
+MaskOfHopeSe:
+  Name: "Mask of Hope"
+  Description: |-
+    Whenever {PlayerName} plays {Value1} attack card{Value1:plural one='' other='s'} in a turn, {PlayerName} loses {Value2} <sprite="Point" name="Power">.
+
+HyottokoMaskSe:
+  Name: "Hyottoko Mask"
+  Description: "Whenever {PlayerName} plays {Value1} attack card{Value1:plural one='' other='s'} in a turn, {OwnerName} gains {Value2} |Block|."
+
+FoxMaskSe:
+  Name: "Fox Mask"
+  Description: "Whenever {PlayerName} plays {Value1} attack card{Value1:plural one='' other='s'} in a turn, {OwnerName} gains {Value2} |Spirit|."
+
+HannyaMaskSe:
+  Name: "Hannya Mask"
+  Description: "Whenever {PlayerName} plays {Value1} attack card{Value1:plural one='' other='s'} in a turn, {OwnerName} gains {Value2} |Firepower|."
+
+HeavyBassDrumSe:
+  Name: "Heavy Bass Drum"
+  Description: "Whenever {PlayerName} plays a card that has the same color as the last card played this turn, {OwnerName} gains {Value1} |Temporary Firepower|."
+
+SwallowsCowrieShellSe:
+  Name: "Swallow's Cowrie Shell"
+  Description: "At the end of {OwnerName}'s turn, {OwnerName} gains {Value1} life."
+
+RobeOfFireRatSe:
+  Name: "Robe of Fire Rat"
+  Description: "At the start of combat, {OwnerName} gains {Value1} |Barrier| and {Value2} |Firepower|." 
+
+BuddhasStoneBowlSe:
+  Name: "Buddha's Stone Bowl"
+  Description: "Defensive actions are cast twice."
+
+BloodthirstyYinYangOrbSe:
+  Name: "Bloodthirsty Yin-Yang Orb"
+  Description: "The first time unblocked damage is dealt by {OwnerName} each turn, {OwnerName} gains {Value1} |Firepower| and {Value2} life."
+
+HakureiPurificationRodSe:
+  Name: "Hakurei Purification Rod"
+  Description: |-
+    If there's any unspent mana at the end of the Player's turn, {OwnerName} gains {Value1} |Barrier|.
+    At the start of combat, {OwnerName} gains {Value2} |Barrier|.
+
+MiniHakkeroSe:
+  Name: "Mini-Hakkero"
+  Description: "Whenever {Mana} is spent to play an attack, {OwnerName} gains {Value1} |Charge|."
+
+ChargingEnemySe:
+  Name: "Charge"
+  Description: "When {OwnerName} has {TriggerLevel} or more |Charge|, {OwnerName} enters |Burst|."
+  Brief: "When {OwnerName} has {TriggerLevel} or more |Charge|, {OwnerName} enters |Burst|."
+
+BurstEnemySe:
+  Name: "Burst"
+  Description: |-
+    All attacks deal {Value1} times as much damage.
+    At the end of {OwnerName}'s turn, {OwnerName} loses |Burst|.
+  Brief: |-
+    All attacks deal {Value1} times as much damage.
+    At the end of {OwnerName}'s turn, {OwnerName} loses |Burst|.
+    
+LaevateinnSe:
+  Name: "Lævateinn"
+  Description: |-
+    |Vulnerable|'s effect is increased by {Value1}% when applied to {PlayerName}.
+    |Vulnerable|'s effect is increased by {Value2}% when applied to enemies.
+
+GungnirSe:
+  Name: "Gungnir"
+  Description: "All attacks are |Accurate|."
+
+OniSakeDishSe:
+  Name: "Oni Sake Dish"
+  Description: "At the end of {OwnerName}'s turn, {OwnerName} gains |Temporary Firepower| equal to the number of attack cards played last turn."
+
+StoneOfAjaSe:
+  Name: "Stone of Aja"
+  Description: |-
+    At the start of combat, {OwnerName} gains {Value1} |Firepower|.
+    At the end of {OwnerName}'s {Value2:ordinal one='%|n:st|' two='%|n:nd|' few='%|n:rd|' other='%|n:th|'} and {Value3:ordinal one='%|n:st|' two='%|n:nd|' few='%|n:rd|' other='%|n:th|'} turn, {OwnerName} takes {Value4} damage.
+
+Kasens100MedicinesSe:
+  Name: "Kasen's 100 Medicines"
+  Description: |-
+    At the end of {OwnerName}'s {Value1:ordinal one='%|n:st|' two='%|n:nd|' few='%|n:rd|' other='%|n:th|'} turn, {OwnerName} gains {Value2} life.
+    At the end of {OwnerName}'s {Value3:ordinal one='%|n:st|' two='%|n:nd|' few='%|n:rd|' other='%|n:th|'} turn, {OwnerName} gains {Value4} |Temporary Firepower|.
+
+HarvestFruitBasketSe:
+  Name: "Harvest Fruit Basket"
+  Description: |-
+    When acquired, {OwnerName} gains {Value3} maximum life.
+    This number increases by {Value2} for each card in the library.
+
+LunarSoilSe:
+  Name: "Lunar Soil"
+  Description: "At the start of {PlayerName}'s {Value1:ordinal one='%|n:st|' two='%|n:nd|' few='%|n:rd|' other='%|n:th|'} turn, |Purify| {Value2}."
+
+BlankCardSe:
+  Name: "Blank Card"
+  Description: "Status cards generated by {OwnerName} will be randomized."
+
+KaguyasTreasureBoxSe:
+  Name: "Kaguya's Treasure Box"
+  Description: |-
+    {OwnerName} gains {Value1} |Exhibits|.
+    {OwnerName} is stunned for {Value2} turn{Value2:plural one='' other='s'}.
+
+JeweledPagodaSe:
+  Name: "Jeweled Pagoda of Bishamonten"
+  Description: |-
+    At the start of combat, {OwnerName} gains {Value1} |Firepower|.
+    This value is increased by {Value2}/{Value3}/{Value4} for Normal/Elite/Boss enemies.
+
+ParasolOfGapsSe:
+  Name: "Parasol of Gaps"
+  Description: "At the end of {OwnerName}'s {Value1:ordinal one='%|n:st|' two='%|n:nd|' few='%|n:rd|' other='%|n:th|'} turn, {OwnerName} gains {Value2} |Block|."
+
+PeachSe:
+  Name: "Peach"
+  Description: "When acquired, {OwnerName} gains {Value1} maximum life."
+
+SpacesuitSe:
+  Name: "Spacesuit"
+  Description: "Whenever {OwnerName} would lose an amount of life, {OwnerName} loses that much life minus {Value1} instead."
+
+UltramarineOrbElixirSe:
+  Name: "Ultramarine Orb Elixir"
+  Description: |-
+    The next time {OwnerName} would be defeated, {OwnerName} heals to maximum life instead.
+
+    After this has taken effect, {OwnerName}'s max life is reduced by {Value2}|n:%| and {OwnerName} gains {Value1} |Firepower|.
+
+SoulTorchSe:
+  Name: "Soul Torch"
+  Description: "Prevents the {Value1:ordinal one='%|n:st|' two='%|n:nd|' few='%|n:rd|' other='%|n:th|'} time {OwnerName} would lose life this combat."
+
+BrokenAmuletSe:
+  Name: "Broken Amulet"
+  Description: "{OwnerName} gains {Value1} |Firepower| and {Value2} |Spirit| for each |Misfortune| in the library."
+
+GensokyoChronicleSe:
+  Name: "Gensokyo Chronicle"
+  Description: "Whenever {PlayerName} plays an Ability, {OwnerName} gains {Value1} life."
+
+TacticalConductorSe:
+  Name: "Tactical Conductor"
+  Description: "Skill cards cost {Mana} more."
+
+LunarFanSe:
+  Name: "Lunar Fan"
+  Description: "At the start of {OwnerName}'s turn, lose only half of {OwnerName}'s |Block|."
+
+LunarVeilSe:
+  Name: "Lunar Veil"
+  Description: "At the start of combat, {OwnerName} gains {Value1} |Flawless|."
+
+SwordOfHisouSe:
+  Name: "Sword of Hisou"
+  Description: "At the end of {OwnerName}'s turn, {OwnerName} deals {Value1} damage."
+
+LunaticGunSe:
+  Name: "Lunatic Gun"
+  Description: "Whenever a card is discarded, {OwnerName} deals {Value1} damage."
+
+PeonySe:
+  Name: "Peony"
+  Description: |-
+    Whenver {Value1} {Mana} is spent, {OwnerName} gains {Value2} life.
+    Works only up to {Value3} times.
+
+IceCubeSe:
+  Name: "Ice Cube"
+  Description: "Whenver {Value1} {Mana} is spent, {OwnerName} gains {Value2} |Barrier|."
+
+PeonyStoneSe:
+  Name: "Peony Stone"
+  Description: "Whenver {Value1} {Mana} is spent, {OwnerName} deals {Value2} damage."
+
+LeafSe:
+  Name: "Leaf"
+  Description: "Whenver {Value1} {Mana} is spent, {OwnerName} gains {Value2} |Graze|."
+
+HakureiAmuletSe:
+  Name: "Hakurei Amuket"
+  Description: "At the start of combat, {OwnerName} gains {Value1} |Amulet|."
+
+DeliciousCookieSe:
+  Name: "Delicious Cookie"
+  Description: "When acquired, {OwnerName} gains {Value1} maximum life."
+
+TranquilizerWatchSe:
+  Name: "Anesthesia Gun Watch"
+  Description: "At the start of combat, {OwnerName} applies {Value1} |Weak| or |Vulnerable|."
+
+TakeCopterSe:
+  Name: "Take-Copter"
+  Description: "Every {Value2} turns, {OwnerName} gains {Value1} |Graze|."
+
+BeerSe:
+  Name: "Beer"
+  Description: "At the start of combat, {OwnerName} gains {Value1} |Temporary Firepower|."
+
+LightsaberSe:
+  Name: "Lightsaber"
+  Description: "When {OwnerName} deals damage for the first time this combat, {OwnerName} applies {Value1} |Lock On|."
+
+RoukankenSe:
+  Name: "Roukanken"
+  Description: "Whenever {OwnerName} deals damage, {OwnerName} applies {Value1} |Lock On|."
+
+LighterSe:
+  Name: "Lighter"
+  Description: "When {OwnerName} deals damage for the first time this combat, {OwnerName} applies {Value1} |Vulnerable|."
+
+TelevisionSe:
+  Name: "Television"
+  Description: "{OwnerName} is immune to |Weak|."
+
+WashingMachineSe:
+  Name: "Washing Machine"
+  Description: "{OwnerName} is immune to |Vulnerable|."
