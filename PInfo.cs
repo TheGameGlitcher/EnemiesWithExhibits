@@ -7,7 +7,7 @@ namespace EnemiesWithExhibits
         //Rename the variable below to prevent conflicts between mod.
         public const string GUID = "thegameglitcher.lbol.jadebox.EnemiesWithExhibits";
         public const string Name = "EnemiesWithExhibitsMod";
-        public const string version = "1.0.0";
+        public const string version = "1.1.0";
         public static readonly Harmony harmony = new Harmony(GUID);
 
     }

@@ -26,35 +26,54 @@ namespace EnemiesWithExhibits
         //WARNING: It is mandatory to rename it to avoid issues.
         public static string modUniqueID = "EnemiesWithExhibitsMod";
 
-        //Name of the character.
-        //This is also the prefix that is used before every .png file in DirResources. 
-        public static string playerName = "Null";
+        public static ConfigEntry<int> normalEnemyExhibits;
+        public static CustomConfigEntry<int> normalEnemyExhibitsEntry = new CustomConfigEntry<int>(
+            value: 1,
+            section: "Jadebox Values",
+            key: "NormalEnemyExhibits",
+            description: "The number of exhibits given to basic enemies at the start of combat.");
 
-        //Whether to us an ingame or custom model.
-        //InGame: Will load the character model of the ingame character.
-        //Custom: Will load DirResource/EnemiesWithExhibitsModel.png 
-        public static bool useInGameModel = true;
+        public static ConfigEntry<int> eliteEnemyExhibits;
+        public static CustomConfigEntry<int> eliteEnemyExhibitsEntry = new CustomConfigEntry<int>(
+            value: 2,
+            section: "Jadebox Values",
+            key: "EliteEnemyExhibits",
+            description: "The number of exhibits given to elite enemies at the start of combat.");
 
-        //If InGame is selected, this is the model that will be loaded. 
-        //Check LBoL.EntityLib.EnemyUnits.Character or using LBoL.EntityLib.PlayerUnits for a list of all the characters available. 
-        public static string modelName = nameof(Reimu);
+        public static ConfigEntry<int> bossEnemyExhibits;
+        public static CustomConfigEntry<int> bossEnemyExhibitsEntry = new CustomConfigEntry<int>(
+            value: 3,
+            section: "Jadebox Values",
+            key: "BossEnemyExhibits",
+            description: "The number of exhibits given to boss enemies at the start of combat.");
 
-        //Some in-game model needs to be flipped (most notably elites).
-        public static bool modelIsFlipped = false;
-
-        //The character's off-color.
-        //Used to separate cards in the card collection and put the off-color cards at the end.
-        public static List<ManaColor> offColors = new List<ManaColor>() { ManaColor.Colorless };
-
-        //Whether the Act 1 boss should be enabled.
-        //The value can be customized LBoL/BepInEx/config/
-        public static ConfigEntry<bool> enableAct1Boss;
-
-        public static CustomConfigEntry<bool> enableAct1BossEntry = new CustomConfigEntry<bool>(
+        public static ConfigEntry<bool> enableActScaling;
+        public static CustomConfigEntry<bool> enableActScalingEntry = new CustomConfigEntry<bool>(
             value: false,
-            section: "EnableAct1Boss",
-            key: "EnableAct1Boss",
-            description: "Toggle the Act 1 boss. Default: Off");
+            section: "Act Scaling",
+            key: "EnableActScaling",
+            description: "If true, the number of exhibits given to enemies will scale based on the act number with the formula Exhibits + ActScalingValue * Act.");
+
+        public static ConfigEntry<int> actScalingValue;
+        public static CustomConfigEntry<int> actScalingValueEntry = new CustomConfigEntry<int>(
+            value: 1,
+            section: "Act Scaling",
+            key: "ActScalingValue",
+            description: "The number of extra exhibits to give each enemy per act. Requires EnableActScaling to be set to true.");
+
+        public static ConfigEntry<bool> enableSectionScaling;
+        public static CustomConfigEntry<bool> enableSectionScalingEntry = new CustomConfigEntry<bool>(
+            value: false,
+            section: "Section Scaling",
+            key: "EnableSectionScaling",
+            description: "If true, the number of exhibits given to enemies will scale based on the level segment with the formula Exhibits + SectionScalingValue * Level Section.");
+
+        public static ConfigEntry<int> sectionScalingValue;
+        public static CustomConfigEntry<int> sectionScalingValueEntry = new CustomConfigEntry<int>(
+            value: 1,
+            section: "Section Scaling",
+            key: "SectionScalingValue",
+            description: "The number of extra exhibits to give each enemy per act section. Requires EnableLevelScaling to be set to true.");
 
         private static readonly Harmony harmony = PInfo.harmony;
 
@@ -71,8 +90,6 @@ namespace EnemiesWithExhibits
         private void Awake()
         {
             log = Logger;
-            ///Load the custom config entry.
-            enableAct1Boss = Config.Bind(enableAct1BossEntry.Section, enableAct1BossEntry.Key, enableAct1BossEntry.Value, enableAct1BossEntry.Description);
 
             // very important. Without this the entry point MonoBehaviour gets destroyed
             DontDestroyOnLoad(gameObject);
@@ -80,12 +97,26 @@ namespace EnemiesWithExhibits
 
             EntityManager.RegisterSelf();
 
-            harmony.PatchAll();
+            SetupConfig();
 
-            //Watermark is now unused as of 1.8.0.
-            //The code is temporarily kept if the devs change their minds.
-            /*if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey(AddWatermark.API.GUID))
-                WatermarkWrapper.ActivateWatermark();*/
+            harmony.PatchAll();
+        }
+
+        private void SetupConfig()
+        {
+            normalEnemyExhibits = Config.Bind<int>(normalEnemyExhibitsEntry.Section, normalEnemyExhibitsEntry.Key, normalEnemyExhibitsEntry.Value, normalEnemyExhibitsEntry.Description);
+
+            eliteEnemyExhibits = Config.Bind<int>(eliteEnemyExhibitsEntry.Section, eliteEnemyExhibitsEntry.Key, eliteEnemyExhibitsEntry.Value, eliteEnemyExhibitsEntry.Description);
+
+            bossEnemyExhibits = Config.Bind<int>(bossEnemyExhibitsEntry.Section, bossEnemyExhibitsEntry.Key, bossEnemyExhibitsEntry.Value, bossEnemyExhibitsEntry.Description);
+
+            enableActScaling = Config.Bind<bool>(enableActScalingEntry.Section, enableActScalingEntry.Key, enableActScalingEntry.Value, enableActScalingEntry.Description);
+
+            actScalingValue = Config.Bind<int>(actScalingValueEntry.Section, actScalingValueEntry.Key, actScalingValueEntry.Value, actScalingValueEntry.Description);
+
+            enableSectionScaling = Config.Bind<bool>(enableSectionScalingEntry.Section, enableSectionScalingEntry.Key, enableSectionScalingEntry.Value, enableSectionScalingEntry.Description);
+
+            sectionScalingValue = Config.Bind<int>(sectionScalingValueEntry.Section, sectionScalingValueEntry.Key, sectionScalingValueEntry.Value, sectionScalingValueEntry.Description);
         }
 
         private void OnDestroy()

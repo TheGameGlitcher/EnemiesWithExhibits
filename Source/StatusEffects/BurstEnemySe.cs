@@ -25,6 +25,8 @@ namespace EnemiesWithExhibits.Source.StatusEffects
 
             config.HasLevel = true;
 
+            config.Order = 20;
+
             return config;
         }
     }

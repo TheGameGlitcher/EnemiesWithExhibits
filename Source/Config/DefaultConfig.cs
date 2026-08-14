@@ -153,7 +153,7 @@ namespace EnemiesWithExhibits.Source.Config
                 Id: "",
                 ImageId: null,
                 Index: 0,
-                Order: 10,
+                Order: 0,
                 Type: StatusEffectType.Special,
                 IsVerbose: false,
                 IsStackable: true,

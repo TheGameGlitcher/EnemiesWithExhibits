@@ -26,6 +26,8 @@ namespace EnemiesWithExhibits.Source.StatusEffects
 
             config.HasLevel = true;
 
+            config.Order = 10;
+
             config.RelativeEffects = new List<string>() { "BurstEnemySe" };
 
             config.SFX = "Charging";

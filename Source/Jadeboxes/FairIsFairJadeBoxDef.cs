@@ -13,7 +13,9 @@ using LBoL.Core.Units;
 using LBoLEntitySideloader.Attributes;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using YamlDotNet.Core.Tokens;
 
@@ -25,11 +27,11 @@ namespace EnemiesWithExhibits.Source.Jadeboxes
         {
             JadeBoxConfig config = DefaultConfig();
 
-            config.Value1 = 1;
+            config.Value1 = BepinexPlugin.normalEnemyExhibits.Value;
 
-            config.Value2 = 2;
+            config.Value2 = BepinexPlugin.eliteEnemyExhibits.Value;
 
-            config.Value3 = 3;
+            config.Value3 = BepinexPlugin.bossEnemyExhibits.Value;
 
             return config;
         }
@@ -39,7 +41,30 @@ namespace EnemiesWithExhibits.Source.Jadeboxes
         {
             public FairIsFairJadeBox() : base()
             {
-                Value4 = 1;
+                Value4 = BepinexPlugin.actScalingValue.Value;
+
+                Value5 = BepinexPlugin.sectionScalingValue.Value;
+            }
+
+            public string ActScalingDescription => LocalizeProperty("ActScalingDescription", decorated: true, required: false);
+
+            public string SectionScalingDescription => LocalizeProperty("SectionScalingDescription", decorated: true, required: false);
+
+            public string DualScalingDescription => LocalizeProperty("DualScalingDescription", decorated: true, required: false);
+
+            protected override string GetBaseDescription()
+            {
+
+                if (BepinexPlugin.enableActScaling.Value && BepinexPlugin.enableSectionScaling.Value)
+                    return DualScalingDescription;
+
+                if (BepinexPlugin.enableActScaling.Value)
+                    return ActScalingDescription;
+
+                if (BepinexPlugin.enableSectionScaling.Value)
+                    return SectionScalingDescription;
+
+                return base.GetBaseDescription();
             }
 
             protected override void OnEnterBattle()
@@ -49,20 +74,24 @@ namespace EnemiesWithExhibits.Source.Jadeboxes
 
             private IEnumerable<BattleAction> OnBattleStated(GameEventArgs args)
             {
+                int actNum = base.GameRun.CurrentStage.Level;
+
+                int sectionNum = base.GameRun.CurrentStation.Act;
+
                 switch (base.Battle.EnemyGroup.EnemyType)
                 {
                     case EnemyType.Normal:
-                        foreach (BattleAction action in ApplyExhibits(Value1))
+                        foreach (BattleAction action in ApplyExhibits(Value1 + (BepinexPlugin.enableActScaling.Value ? Value4 * actNum : 0) + (BepinexPlugin.enableSectionScaling.Value ? Value5 * sectionNum : 0)))
                             yield return action;
                         break;
 
                     case EnemyType.Elite:
-                        foreach (BattleAction action in ApplyExhibits(Value2))
+                        foreach (BattleAction action in ApplyExhibits(Value2 + (BepinexPlugin.enableActScaling.Value ? Value4 * actNum : 0) + (BepinexPlugin.enableSectionScaling.Value ? Value5 * sectionNum : 0)))
                             yield return action;
                         break;
 
                     case EnemyType.Boss:
-                        foreach (BattleAction action in ApplyExhibits(Value3))
+                        foreach (BattleAction action in ApplyExhibits(Value3 + (BepinexPlugin.enableActScaling.Value ? Value4 * actNum : 0) + (BepinexPlugin.enableSectionScaling.Value ? Value5 * sectionNum : 0)))
                             yield return action;
                         break;
 

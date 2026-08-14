@@ -2,3 +2,12 @@ FairIsFairJadeBox:
   Name: "Enemies With Exhibits"
   Description: |-
     All Normal/Elite/Boss enemies start the battle with {Value1}/{Value2}/{Value3} exhibits.
+  ActScalingDescription: |-
+    All Normal/Elite/Boss enemies start the battle with {Value1}/{Value2}/{Value3} exhibits.
+    Additionally, all enemies start the battle with {Value4} extra exhibit{Value4:plural one='' other='s'} per act.
+  SectionScalingDescription: |-
+    All Normal/Elite/Boss enemies start the battle with {Value1}/{Value2}/{Value3} exhibits.
+    Additionally, all enemies start the battle with {Value5} extra exhibit{Value5:plural one='' other='s'} per act section.
+  DualScalingDescription: |-
+    All Normal/Elite/Boss enemies start the battle with {Value1}/{Value2}/{Value3} exhibits.
+    Additionally, all enemies start the battle with {Value4} extra exhibit{Value4:plural one='' other='s'} per act and {Value5} extra exhibit{Value5:plural one='' other='s'} per act section.
