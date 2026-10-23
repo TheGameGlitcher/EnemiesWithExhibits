@@ -1,5 +1,4 @@
-﻿using EnemiesWithExhibits.Source.GunName;
-using EnemiesWithExhibits.Source.Misc;
+﻿using EnemiesWithExhibits.Source.Misc;
 using EnemiesWithExhibits.Source.StatusEffects.Templates;
 using LBoL.Base;
 using LBoL.Base.Extensions;

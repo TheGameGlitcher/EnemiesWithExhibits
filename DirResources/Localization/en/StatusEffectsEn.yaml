@@ -267,3 +267,15 @@ TelevisionSe:
 WashingMachineSe:
   Name: "Washing Machine"
   Description: "{OwnerName} is immune to |Vulnerable|."
+
+BorderSensorSe:
+  Name: "Border Sensor"  
+  Description: "{OwnerName} ignores incoming damage modifiers by seeing the true nature of reality."
+
+OldLunarSakeSe:
+  Name: "Old Lunar Sake"
+  Description: "Whenever {PlayerName} plays a card with |Exile|, |Purify| {Value1}."
+
+PhilosophersStoneSe:
+  Name: "Philosopher's Stone"
+  Description: "Whenever {PlayerName} gains {Mana}, {PlayerName} gains that much minus {Value1} instead."

@@ -1,5 +1,4 @@
-﻿using EnemiesWithExhibits.Source.GunName;
-using EnemiesWithExhibits.Source.StatusEffects.Templates;
+﻿using EnemiesWithExhibits.Source.StatusEffects.Templates;
 using LBoL.Base;
 using LBoL.Base.Extensions;
 using LBoL.ConfigData;
@@ -17,7 +16,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace EnemiesWithExhibits.Source.StatusEffects.Rarities.Shining
+namespace EnemiesWithExhibits.Source.StatusEffects.Rarities.Common
 {
     public sealed class LightsaberSeDef : EnemiesWithExhibitsStatusEffectTemplate
     {

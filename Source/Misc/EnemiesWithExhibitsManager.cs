@@ -5,6 +5,7 @@ using EnemiesWithExhibits.Source.StatusEffects.Rarities.Shining;
 using EnemiesWithExhibits.Source.StatusEffects.Rarities.Uncommon;
 using LBoL.Base;
 using LBoL.Core;
+using LBoL.Core.Randoms;
 using LBoL.Core.StatusEffects;
 using LBoL.Core.Units;
 using LBoL.EntityLib.Exhibits.Common;
@@ -32,7 +33,9 @@ namespace EnemiesWithExhibits.Source.Misc
             typeof(HarvestFruitBasketSe),
             typeof(LunarSoilSe),
             typeof(BlankCardSe),
-            typeof(KaguyasTreasureBoxSe)
+            typeof(KaguyasTreasureBoxSe),
+            typeof(OldLunarSakeSe),
+            typeof(PhilosophersStoneSe)
         };
 
         private static readonly Type[] _commonExhibits =
@@ -94,7 +97,8 @@ namespace EnemiesWithExhibits.Source.Misc
         {
             typeof(SwallowsCowrieShellSe),
             typeof(RobeOfFireRatSe),
-            typeof(BuddhasStoneBowlSe)
+            typeof(BuddhasStoneBowlSe),
+            typeof(BorderSensorSe)
         };
 
         public static readonly Type[] EnemyExhibits = _shiningExhibits.Concat(_commonExhibits).Concat(_uncommonExhibits).Concat(_rareExhibits).Concat(_mythicExhibits).ToArray();

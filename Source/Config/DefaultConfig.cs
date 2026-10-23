@@ -1,8 +1,7 @@
-
-using EnemiesWithExhibits.Source.GunName;
 using LBoL.Base;
 using LBoL.ConfigData;
 using LBoLEntitySideloader.Entities;
+using LBoLEntitySideloader.ExtraFunc.GunHelpers;
 using System.Collections.Generic;
 using UnityEngine;
 using static LBoLEntitySideloader.Entities.EnemyGroupTemplate;

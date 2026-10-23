@@ -1,5 +1,4 @@
-﻿using EnemiesWithExhibits.Source.GunName;
-using EnemiesWithExhibits.Source.StatusEffects.Templates;
+﻿using EnemiesWithExhibits.Source.StatusEffects.Templates;
 using LBoL.Base;
 using LBoL.ConfigData;
 using LBoL.Core;
@@ -9,6 +8,7 @@ using LBoL.Core.Cards;
 using LBoL.Core.StatusEffects;
 using LBoL.Core.Units;
 using LBoLEntitySideloader.Attributes;
+using LBoLEntitySideloader.ExtraFunc.GunHelpers;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,6 +31,8 @@ namespace EnemiesWithExhibits.Source.StatusEffects.Rarities.Uncommon
         {
             Value1 = 4;
             Value2 = 25;
+
+            GunName = GunNameID.GetGunFromId(60002); // ExhTNT
         }
 
         protected override void OnAdded(Unit unit)
@@ -50,7 +52,7 @@ namespace EnemiesWithExhibits.Source.StatusEffects.Rarities.Uncommon
             {
                 base.NotifyActivating();
 
-                yield return new DamageAction(base.Owner, base.Battle.Player, DamageInfo.Reaction((float)base.Value2, false), GunNameID.GetGunFromId(60002), GunType.Single);
+                yield return new DamageAction(base.Owner, base.Battle.Player, DamageInfo.Reaction((float)base.Value2, false), GunName, GunType.Single);
 
                 base.Highlight = false;
             }

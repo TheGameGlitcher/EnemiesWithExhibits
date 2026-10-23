@@ -1,5 +1,4 @@
-﻿using EnemiesWithExhibits.Source.GunName;
-using EnemiesWithExhibits.Source.StatusEffects.Templates;
+﻿using EnemiesWithExhibits.Source.StatusEffects.Templates;
 using LBoL.Base;
 using LBoL.Base.Extensions;
 using LBoL.ConfigData;
@@ -11,6 +10,7 @@ using LBoL.Core.Intentions;
 using LBoL.Core.StatusEffects;
 using LBoL.Core.Units;
 using LBoLEntitySideloader.Attributes;
+using LBoLEntitySideloader.ExtraFunc.GunHelpers;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
