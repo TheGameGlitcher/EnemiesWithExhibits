@@ -43,23 +43,22 @@ namespace EnemiesWithExhibits.Source.StatusEffects.Rarities.Shining
             if (unit is PlayerUnit)
                 Debug.LogError(this.DebugName + " should not apply to player unit.");
 
-            base.ReactOwnerEvent<CardUsingEventArgs>(base.Battle.CardUsed, new EventSequencedReactor<CardUsingEventArgs>(this.OnCardUsed));
+            base.HandleOwnerEvent<CardUsingEventArgs>(base.Battle.CardUsed, new GameEventHandler<CardUsingEventArgs>(this.OnCardUsed));
             base.ReactOwnerEvent<UnitEventArgs>(base.Owner.TurnEnded, new EventSequencedReactor<UnitEventArgs>(this.OnOwnerTurnEnded));
         }
 
-        private IEnumerable<BattleAction> OnCardUsed(CardUsingEventArgs args)
+        private void OnCardUsed(CardUsingEventArgs args)
         {
             if (args.Card.CardType == CardType.Attack)
                 Count++;
-
-            yield break;
         }
 
         private IEnumerable<BattleAction> OnOwnerTurnEnded(UnitEventArgs args)
         {
             NotifyActivating();
 
-            yield return new ApplyStatusEffectAction<TempFirepower>(this.Owner, Count, null, null, null, 0.2f);
+            if (Count > 0)
+                yield return new ApplyStatusEffectAction<TempFirepower>(this.Owner, Count, null, null, null, 0.2f);
 
             Count = 0;
 

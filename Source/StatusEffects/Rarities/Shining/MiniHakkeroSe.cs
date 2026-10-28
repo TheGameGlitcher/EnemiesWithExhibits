@@ -43,19 +43,17 @@ namespace EnemiesWithExhibits.Source.StatusEffects.Rarities.Shining
             if (unit is PlayerUnit)
                 Debug.LogError(this.DebugName + " should not apply to player unit.");
 
-            base.ReactOwnerEvent<CardUsingEventArgs>(base.Battle.CardUsed, new EventSequencedReactor<CardUsingEventArgs>(this.OnCardUsed));
+            base.HandleOwnerEvent<CardUsingEventArgs>(base.Battle.CardUsed, new GameEventHandler<CardUsingEventArgs>(this.OnCardUsed));
         }
 
-        private IEnumerable<BattleAction> OnCardUsed(CardUsingEventArgs args)
+        private void OnCardUsed(CardUsingEventArgs args)
         {
             if (args.Card.CardType == CardType.Attack && (args.ConsumingMana.Red > 0 || args.ConsumingMana.Philosophy > 0))
             {
                 base.NotifyActivating();
 
-                yield return new ApplyStatusEffectAction<ChargingEnemySe>(base.Owner, base.Value1, null, null, null, 0f, true);
+                React(new ApplyStatusEffectAction<ChargingEnemySe>(base.Owner, base.Value1, null, null, null, 0f, true));
             }
-
-            yield break;
         }
     }
 }

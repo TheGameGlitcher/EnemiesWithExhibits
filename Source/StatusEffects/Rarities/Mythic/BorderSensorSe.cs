@@ -11,7 +11,10 @@ using LBoL.Core.Intentions;
 using LBoL.Core.StatusEffects;
 using LBoL.Core.Units;
 using LBoL.EntityLib.StatusEffects.Koishi;
+using LBoL.EntityLib.StatusEffects.Neutral.Green;
+using LBoL.EntityLib.StatusEffects.Sakuya;
 using LBoLEntitySideloader.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -46,12 +49,29 @@ namespace EnemiesWithExhibits.Source.StatusEffects.Rarities.Mythic
 
             var burst = base.Battle.Player.GetStatusEffect<Burst>();
             var passion = base.Battle.Player.GetStatusEffect<MoodPassion>();
+            var evilMaid = base.Battle.Player.GetStatusEffect<EvilMaidDoubleAttack>();
+            var butterflyPill = base.Battle.Player.GetStatusEffect<YonglinBurstSe>();
+
+            var vulnerable = this.Owner.GetStatusEffect<Vulnerable>();
+            var lockOn = this.Owner.GetStatusEffect<LockedOn>();
+
+            if (vulnerable != null)
+                damageInfo.Damage = (float)Math.Round(damageInfo.Amount / (1f + (float)vulnerable.Value / 100f));
+
+            if (lockOn != null)
+                damageInfo = damageInfo.ReduceBy(lockOn.Level);
 
             if (burst != null)
                 damageInfo.Damage = damageInfo.Amount / burst.DamageRate;
 
             if (passion != null)
                 damageInfo.Damage = damageInfo.Amount / passion.AttackRatio;
+
+            if (evilMaid != null)
+                damageInfo.Damage = damageInfo.Amount / evilMaid.DamageRate;
+
+            if (butterflyPill != null)
+                damageInfo.Damage = damageInfo.Amount / butterflyPill.DamageRate;
 
             if (base.Battle.Player.TotalFirepower > 0)
                 damageInfo = damageInfo.ReduceBy(base.Battle.Player.TotalFirepower);

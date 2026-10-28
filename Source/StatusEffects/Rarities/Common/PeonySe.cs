@@ -50,13 +50,13 @@ namespace EnemiesWithExhibits.Source.StatusEffects.Rarities.Common
             if (unit is PlayerUnit)
                 Debug.LogError(this.DebugName + " should not apply to player unit.");
 
-            base.ReactOwnerEvent<ManaEventArgs>(base.Battle.ManaConsumed, new EventSequencedReactor<ManaEventArgs>(this.OnManaConsumed));
+            base.HandleOwnerEvent<ManaEventArgs>(base.Battle.ManaConsumed, new GameEventHandler<ManaEventArgs>(this.OnManaConsumed));
 
             Level = 2;
             Count = 0;
         }
 
-        private IEnumerable<BattleAction> OnManaConsumed(ManaEventArgs args)
+        private void OnManaConsumed(ManaEventArgs args)
         {
             if (Level > 0)
             {
@@ -76,7 +76,7 @@ namespace EnemiesWithExhibits.Source.StatusEffects.Rarities.Common
 
                     base.NotifyActivating();
 
-                    yield return new HealAction(base.Owner, base.Owner, base.Value2 * div, HealType.Normal, 0.2f);
+                    React(new HealAction(base.Owner, base.Owner, base.Value2 * div, HealType.Normal, 0.2f));
 
                     Level -= div;
 
@@ -84,8 +84,6 @@ namespace EnemiesWithExhibits.Source.StatusEffects.Rarities.Common
                         Count = 0;
                 }
             }
-
-            yield break;
         }
     }
 }

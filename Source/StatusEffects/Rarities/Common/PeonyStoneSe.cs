@@ -49,12 +49,12 @@ namespace EnemiesWithExhibits.Source.StatusEffects.Rarities.Common
             if (unit is PlayerUnit)
                 Debug.LogError(this.DebugName + " should not apply to player unit.");
 
-            base.ReactOwnerEvent<ManaEventArgs>(base.Battle.ManaConsumed, new EventSequencedReactor<ManaEventArgs>(this.OnManaConsumed));
+            base.HandleOwnerEvent<ManaEventArgs>(base.Battle.ManaConsumed, new GameEventHandler<ManaEventArgs>(this.OnManaConsumed));
 
             Count = 0;
         }
 
-        private IEnumerable<BattleAction> OnManaConsumed(ManaEventArgs args)
+        private void OnManaConsumed(ManaEventArgs args)
         {
             Count += args.Value.Red;
             Count += args.Value.Philosophy;
@@ -69,10 +69,9 @@ namespace EnemiesWithExhibits.Source.StatusEffects.Rarities.Common
             if (item != 0)
             {
                 base.NotifyActivating();
-                yield return new DamageAction(base.Owner, base.Battle.Player, DamageInfo.Reaction((float)(base.Value2 * item), false), GunName, GunType.Single);
-            }
 
-            yield break;
+                React(new DamageAction(base.Owner, base.Battle.Player, DamageInfo.Reaction((float)(base.Value2 * item), false), GunName, GunType.Single));
+            }
         }
     }
 }
