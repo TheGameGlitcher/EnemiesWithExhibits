@@ -34,10 +34,10 @@ namespace EnemiesWithExhibits.Source.StatusEffects.Rarities.Shining
 
         protected override void OnAdded(Unit unit)
         {
-            base.ReactOwnerEvent<DamageDealingEventArgs>(base.Owner.DamageDealing, new EventSequencedReactor<DamageDealingEventArgs>(this.OnDamageDealing));
+            base.HandleOwnerEvent<DamageDealingEventArgs>(base.Owner.DamageDealing, new GameEventHandler<DamageDealingEventArgs>(this.OnDamageDealing));
         }
 
-        private IEnumerable<BattleAction> OnDamageDealing(DamageDealingEventArgs args)
+        private void OnDamageDealing(DamageDealingEventArgs args)
         {
 
             if (args.Cause == ActionCause.EnemyAction && args.DamageInfo.IsAccuracy == false)
@@ -52,8 +52,6 @@ namespace EnemiesWithExhibits.Source.StatusEffects.Rarities.Shining
 
                 args.AddModifier(this);
             }
-
-            yield break;
         }
     }
 }

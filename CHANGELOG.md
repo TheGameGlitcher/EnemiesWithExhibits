@@ -1,3 +1,6 @@
+## Version 1.0.5:
+- Fixed Border Sensor activating against non-attack damage.
+
 ## Version 1.0.4:
 - Changed how Peony, Mini-Hakkero, Peony Stone, Ice Cube and Leaf track mana consumption.
 - Changed how Oni Sake Dish tracks card uses and fixed an issue where Oni Sake Dish would apply temporary firepower with 0 level.

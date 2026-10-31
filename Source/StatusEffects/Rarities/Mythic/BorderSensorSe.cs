@@ -45,44 +45,47 @@ namespace EnemiesWithExhibits.Source.StatusEffects.Rarities.Mythic
 
         private void OnDamageRecieving(DamageEventArgs args)
         {
-            var damageInfo = args.DamageInfo;
-
-            var burst = base.Battle.Player.GetStatusEffect<Burst>();
-            var passion = base.Battle.Player.GetStatusEffect<MoodPassion>();
-            var evilMaid = base.Battle.Player.GetStatusEffect<EvilMaidDoubleAttack>();
-            var butterflyPill = base.Battle.Player.GetStatusEffect<YonglinBurstSe>();
-
-            var vulnerable = this.Owner.GetStatusEffect<Vulnerable>();
-            var lockOn = this.Owner.GetStatusEffect<LockedOn>();
-
-            if (vulnerable != null)
-                damageInfo.Damage = (float)Math.Round(damageInfo.Amount / (1f + (float)vulnerable.Value / 100f));
-
-            if (lockOn != null)
-                damageInfo = damageInfo.ReduceBy(lockOn.Level);
-
-            if (burst != null)
-                damageInfo.Damage = damageInfo.Amount / burst.DamageRate;
-
-            if (passion != null)
-                damageInfo.Damage = damageInfo.Amount / passion.AttackRatio;
-
-            if (evilMaid != null)
-                damageInfo.Damage = damageInfo.Amount / evilMaid.DamageRate;
-
-            if (butterflyPill != null)
-                damageInfo.Damage = damageInfo.Amount / butterflyPill.DamageRate;
-
-            if (base.Battle.Player.TotalFirepower > 0)
-                damageInfo = damageInfo.ReduceBy(base.Battle.Player.TotalFirepower);
-
-            if (damageInfo.Amount != args.DamageInfo.Amount)
+            if (args.DamageInfo.DamageType == DamageType.Attack)
             {
-                args.DamageInfo = damageInfo;
-                args.AddModifier(this);
+                var damageInfo = args.DamageInfo;
 
-                if (args.Cause != ActionCause.OnlyCalculate)
-                    this.NotifyActivating();
+                var burst = base.Battle.Player.GetStatusEffect<Burst>();
+                var passion = base.Battle.Player.GetStatusEffect<MoodPassion>();
+                var evilMaid = base.Battle.Player.GetStatusEffect<EvilMaidDoubleAttack>();
+                var butterflyPill = base.Battle.Player.GetStatusEffect<YonglinBurstSe>();
+
+                var vulnerable = this.Owner.GetStatusEffect<Vulnerable>();
+                var lockOn = this.Owner.GetStatusEffect<LockedOn>();
+
+                if (vulnerable != null)
+                    damageInfo.Damage = (float)Math.Round(damageInfo.Amount / (1f + (float)vulnerable.Value / 100f));
+
+                if (lockOn != null)
+                    damageInfo = damageInfo.ReduceBy(lockOn.Level);
+
+                if (burst != null)
+                    damageInfo.Damage = damageInfo.Amount / burst.DamageRate;
+
+                if (passion != null)
+                    damageInfo.Damage = damageInfo.Amount / passion.AttackRatio;
+
+                if (evilMaid != null)
+                    damageInfo.Damage = damageInfo.Amount / evilMaid.DamageRate;
+
+                if (butterflyPill != null)
+                    damageInfo.Damage = damageInfo.Amount / butterflyPill.DamageRate;
+
+                if (base.Battle.Player.TotalFirepower > 0)
+                    damageInfo = damageInfo.ReduceBy(base.Battle.Player.TotalFirepower);
+
+                if (damageInfo.Amount != args.DamageInfo.Amount)
+                {
+                    args.DamageInfo = damageInfo;
+                    args.AddModifier(this);
+
+                    if (args.Cause != ActionCause.OnlyCalculate)
+                        this.NotifyActivating();
+                }
             }
         }
     }
