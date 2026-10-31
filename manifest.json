@@ -1,6 +1,6 @@
 {
   "name": "EnemiesWithExhibitsMod",
-  "version_number": "1.0.5",
+  "version_number": "1.0.6",
   "website_url": "https://github.com/TheGameGlitcher/EnemiesWithExhibits",
   "description": "Adds a JadeBox which allows enemies to simulate exhibits",
   "dependencies": [ "BepInEx-BepInExPack-5.4.2100", "TeamNeo-Sideloader-0.9.7601" ]

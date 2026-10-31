@@ -1,3 +1,6 @@
+## Version 1.0.6:
+- Fixed Gungnir sometimes breaking enemy intentions.
+
 ## Version 1.0.5:
 - Fixed Border Sensor activating against non-attack damage.
 

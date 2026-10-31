@@ -39,7 +39,6 @@ namespace EnemiesWithExhibits.Source.StatusEffects.Rarities.Shining
 
         private void OnDamageDealing(DamageDealingEventArgs args)
         {
-
             if (args.Cause == ActionCause.EnemyAction && args.DamageInfo.IsAccuracy == false)
             {
                 this.NotifyActivating();
